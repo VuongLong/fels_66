@@ -1,2 +1,5 @@
 $("#section_category").
   prepend("<%= escape_javascript(render "category",category: @category) %>");
+$("#flash").children().remove();
+$("#flash").prepend("<%= j render partial: "shared/notice_banner" %>");
+$("#show_flash").fadeOut(1000);

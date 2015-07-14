@@ -7,18 +7,10 @@
   def create
     @word = Word.new word_params
     if @word.save
-      flash[:success] = t "admin.create_successfully"
-      respond_to do |format|
-        format.html {redirect_to admin_words_path}
-        format.js
-      end
+      flash.now[:success] = t("admin.create_successfully")
     else
-      flash[:danger] = t "admin.create_fail" 
-      render "index" 
-    end 
-  end
-
-  def edit
+      flash.now[:failed] = t("admin.create_fail")
+    end  
   end
 
   def update
@@ -28,17 +20,13 @@
       flash[:danger] = t "admin.update_fail"
     end
     redirect_to admin_words_path
-  end  
+  end
   
   def destroy
     if @word.destroy
-      flash[:success] = t "admin.destroy_successfully"  
+      flash.now[:success] = t("admin.destroy_successfully")
     else
-      flash[:failed] = t "admin.destroy_fail"
-    end
-    respond_to do |format|
-      format.html {redirect_to admin_words_path}
-      format.js
+      flash.now[:failed] = t("admin.destroy_fail")
     end
   end
 

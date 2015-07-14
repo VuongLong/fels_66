@@ -1,2 +1,5 @@
 $("#section_word").
   append("<%= escape_javascript(render "word",word: @word) %>");
+$("#flash").children().remove();
+$("#flash").prepend("<%= j render partial: "shared/notice_banner" %>");
+$("#show_flash").fadeOut(1000);

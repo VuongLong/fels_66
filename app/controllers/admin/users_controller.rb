@@ -9,25 +9,17 @@ class Admin::UsersController < ApplicationController
 
   def update
     if @user.update_attributes user_params
-      flash[:success] = t "admin.update_successfully"
+      flash.now[:success] = t "admin.update_successfully"
     else
-      flash[:failed] = t "admin.update_fail"
-    end
-    respond_to do |format|
-      format.html {redirect_to admin_root_url}
-      format.js
+      flash.now[:danger] = t "admin.update_fail"
     end
   end
 
   def destroy
     if @user.destroy
-      flash[:success] = t "admin.destroy_successfully"
+      flash.now[:success] = t("admin.destroy_successfully")
     else
-      flash[:failed] = t "admin.destroy_fail"
-    end
-    respond_to do |format|
-      format.html {redirect_to admin_root_url}
-      format.js
+      flash.now[:failed] = t("admin.destroy_fail")
     end
   end
 

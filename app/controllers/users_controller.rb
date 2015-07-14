@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   def show
     @feed_activities = @user.activities.recent.paginate page: params[:page],
       per_page: Settings.per_page
-    @results = Result.results_by_user(current_user.lessons.pluck(:id))
+    @results = Result.results_by_user(@user.lessons.pluck(:id))
   end
   
   def new

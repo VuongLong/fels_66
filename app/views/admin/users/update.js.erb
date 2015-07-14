@@ -1,1 +1,4 @@
 $("#user-<%= @user.id%>").html("<%= escape_javascript(render "user", user: @user) %>");
+$("#flash").children().remove();
+$("#flash").prepend("<%= j render partial: "shared/notice_banner" %>");
+$("#show_flash").fadeOut(1000);

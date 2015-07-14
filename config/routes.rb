@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get     "login"      =>   "sessions#new"
   post    "login"      =>   "sessions#create"
   delete  "logout"     =>   "sessions#destroy"
-  get     "categories" =>   "categories#index"
+  resources :categories, only: [:index]
   resources :words, only: [:index]
   resources :users
   resources :lessons

@@ -10,13 +10,9 @@ class Admin::CategoriesController < ApplicationController
   def create
     @category = Category.new category_params
     if @category.save
-      flash[:success] = t "admin.create_successfully"
+      flash.now[:success] = t("admin.create_successfully")
     else
-      flash[:failed] = t "admin.create_fail"
-    end
-    respond_to do |format|
-      format.html {redirect_to new_admin_category_path}
-      format.js
+      flash.now[:failed] = t("admin.create_fail")
     end
   end
 
@@ -27,17 +23,13 @@ class Admin::CategoriesController < ApplicationController
 
   def destroy
     if @category.destroy
-      flash[:success] = t "admin.destroy_successfully"
+      flash.now[:success] = t("admin.destroy_successfully")
     else
-      flash[:failed] = t "admin.destroy_fail"
-    end
-    respond_to do |format|
-      format.html {redirect_to new_admin_category_path}
-      format.js  
+      flash.now[:failed] = t("admin.destroy_fail")
     end
   end
 
-  private
+  private  
   def category_params
     params.require(:category).permit :name
   end
